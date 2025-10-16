@@ -1,0 +1,64 @@
+{{ define "directory"}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory Listing</title>
+
+    <style>
+        #tree ul {
+            list-style-type: none;
+            padding-left: 0;
+
+            li {
+                display: inline-block;
+                margin-block: 10px;
+
+                &:before {
+                    content: " ";
+                    display: inline-block;
+                    width: calc(var(--depth) * 28px);
+                    height: 1px;
+                    background-color: black;
+                    margin-inline-end: 8px;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul id="listing">
+            <strong>Listing</strong>
+            {{ range .Listings }}
+            <li>{{ .Path }}</li>
+            {{ end }}
+        </ul>
+
+
+        <ul id="tree"><strong>Directory Tree</strong>
+            {{ template "tree" .Directory }}
+        </ul>
+
+    </div>
+</body>
+
+</html>
+{{ end }}
+
+
+{{ define "tree" }}
+<ul data-children="{{ len .Children }}">
+    <li style="--depth: {{  .Depth }};" data-depth="{{  .Depth }}">{{ .Path }}</li>
+    {{ if .Children }}
+    <ul>
+        {{ range .Children }}
+        {{ template "tree" . }}
+        {{ end }}
+    </ul>
+    {{ end }}
+</ul>
+{{ end }}
