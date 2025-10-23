@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.CR_PAT }}
 
       - name: Build and Push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: ./frontend
           push: true
