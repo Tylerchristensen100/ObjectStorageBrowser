@@ -2,6 +2,17 @@ name: Build and Push Frontend
 
 on:
   workflow_call:
+    inputs:
+      # Define the 'ref' input
+      ref:
+        description: 'The Git reference (branch/tag) to use for deployment'
+        required: true
+        type: string
+      # Define the 'deploy-environment' input
+      deploy-environment:
+        description: 'The environment to deploy to (e.g., staging, production)'
+        required: true
+        type: string
 
 jobs:
   build-and-push:
