@@ -7,7 +7,7 @@ services:
     environment:
       - ENDPOINT=minio-api.freethegnomes.org
       - KEY=object_browser
-      - PASSWORD=Dg4BZaBaeWHJ2hNBCuuXqLhuubRcRhxIvfDQ97os
+      - PASSWORD=password
       - OAUTH_CLIENT_SECRET=secret
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/healthz"]
