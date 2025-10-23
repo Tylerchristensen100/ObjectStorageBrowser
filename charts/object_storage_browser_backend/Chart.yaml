@@ -1,0 +1,13 @@
+apiVersion: v2
+name: object_storage_browser_backend
+description: A Helm chart for Kubernetes
+type: application
+version: 0.1.0
+appVersion: "1.16.0"
+maintainers:
+  - name: Tyler Christensen
+    url: https://github.com/Tylerchristensen100
+sources: 
+  - https://github.com/Tylerchristensen100/ObjectStorageBrowser
+icon: https://freethegnomes.org/favicon.ico
+

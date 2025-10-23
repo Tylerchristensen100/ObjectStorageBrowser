@@ -1,0 +1,29 @@
+openapi: "3.0.3"
+info:
+  title: Object Storage Browser API
+  description: "Browse and manage files in your object storage service with ease using the Object Storage Browser API. This API provides endpoints to list, upload, download, and delete files in your object storage buckets. Whether you're using AWS S3, Google Cloud Storage, or any other compatible service, this API simplifies your file management tasks."
+  contact:
+    name: Tyler Christensen
+    email: tylerchristensen100@gmail.com
+  version: "0.0.9"
+
+servers:
+   - url: http://localhost:3000
+     description: Local development server
+
+paths:
+  /api/buckets:
+    get:
+  /api/directory:
+  get:
+  delete:
+  /api/directory/tree:
+  /api/object:
+  get:
+  post:
+  delete:
+
+
+  /healthz:
+  /templates/directory:
+

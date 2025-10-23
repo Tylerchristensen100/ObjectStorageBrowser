@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "object_storage_browser_frontend.fullname" . }}
+  labels:
+    {{- include "object_storage_browser_frontend.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "object_storage_browser_frontend.selectorLabels" . | nindent 4 }}

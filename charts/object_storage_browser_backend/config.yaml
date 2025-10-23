@@ -1,0 +1,18 @@
+
+host: 0.0.0.0
+port: {{ .Values.service.port }}
+trustedOrigins:
+  - http://localhost:3000
+  - http://localhost:8000
+
+oauth:
+  client_id: 343508331458987391
+  redirect_url: http://localhost:3000/callback
+  issuer: https://testing-j6cwro.us1.zitadel.cloud
+  auth_url: https://testing-j6cwro.us1.zitadel.cloud/oauth/v2/authorize
+  token_url: https://testing-j6cwro.us1.zitadel.cloud/oauth/v2/token
+  scopes:
+    - "openid"
+    - "profile"
+    - "email"
+    - "offline_access"

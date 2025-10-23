@@ -1,0 +1,46 @@
+name: Build and Push Image based on directory
+
+on:
+  push:
+    branches:
+      - main 
+      - dev
+
+jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs: 
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check Changes
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+            frontend:
+              - 'frontend/**'
+
+
+  call-deploy-backend:
+    needs: check-changes
+    if: needs.check-changes.outputs.backend == 'true'
+    uses: ./.github/workflows/deploy-backend.yaml
+    with:
+      ref: ${{ github.ref }}
+      deploy-environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+  
+  
+  call-deploy-frontend:
+    needs: check-changes
+    if: needs.check-changes.outputs.frontend == 'true'
+    uses: ./.github/workflows/deploy-frontend.yaml
+    with:
+      ref: ${{ github.ref }}
+      deploy-environment: ${{ github.ref == 'refs/heads/main' && 'production' || 'dev' }}

@@ -1,0 +1,44 @@
+services:
+  backend:
+    build: ./backend
+    container_name: object_storage_browser_backend
+    ports:
+      - "3000:3000"
+    environment:
+      - ENDPOINT=minio-api.freethegnomes.org
+      - KEY=object_browser
+      - PASSWORD=Dg4BZaBaeWHJ2hNBCuuXqLhuubRcRhxIvfDQ97os
+      - OAUTH_CLIENT_SECRET=secret
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
+    develop:
+      watch:
+        - action: rebuild
+          path: ./backend
+          target: .
+
+  frontend:
+    build: 
+      context: ./frontend
+      args:
+        VITE_BASE_URL: http://localhost:3000
+
+    container_name: object_storage_browser_frontend
+    ports:
+      - "8000:80"
+    environment:
+      - VITE_BASE_URL=http://localhost:3000
+    depends_on:
+      - backend
+    develop:
+      watch:
+        - action: rebuild
+          path: ./frontend
+          target: .
+          ignore:
+            - node_modules
+            - dist
