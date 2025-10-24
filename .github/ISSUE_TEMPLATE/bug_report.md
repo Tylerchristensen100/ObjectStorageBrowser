@@ -1,38 +1,45 @@
 ---
 name: Bug report
-about: Create a report to help us improve
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## Description
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+### Impact
+<br />
+What is the impact? (ex. visual jank, crash)
+<br />
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Risk
+<br />
+What are the risks of fixing it? (ex. We could create an infinite state loop that causes a crash.)
+What are the risks of not fixing it? (ex.Corruption of files.)
+<br />
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+## Testing
+I can replicate the bug in these environments
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+### Platform
+- [ ] Web
+- [ ] Linux
+- [ ] MacOS
+- [ ] Windows
+
+### How to replicate
+<br />
+<br />
+<br />
+<br />
 
 **Additional context**
 Add any other context about the problem here.
